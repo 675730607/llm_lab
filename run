@@ -1,0 +1,46 @@
+#!/bin/bash
+
+set -e 
+
+if [ $# -lt 1 ]; then
+    echo -e "not specify cmd.\n"
+    echo "Usage: $0 cmd [subcmd] [args...]"
+    exit -1
+fi
+
+
+if [ -d  ./script/$1 ]; then
+    if [ $# -lt 2 ]; then
+        echo -e "not specify subcmd.\n"
+        echo "Usage: $0 cmd [subcmd] [args...]"
+        exit -1
+    fi
+    if [ -f ./script/$1/$2 ]; then
+        command="./script/$1/$2"
+        shift 2
+        ${command} $*
+        exit 0
+    elif [ -f ./script/$1/$2.sh ]; then
+        command="./script/$1/$2.sh"
+        shift 2
+        ${command} $*
+        exit 0
+    else
+        echo -e "command ./script/$1/$2 not exist.\n"
+        echo "Usage: $0 cmd [subcmd] [args...]"
+        exit -1
+    fi
+elif [ -f ./script/$1 ]; then
+    command="./script/$1"
+    shift 1
+    ${command} $*
+elif [ -f ./script/$1.sh ]; then
+    command="./script/$1.sh"
+    shift 1
+    ${command} $*
+else
+    echo -e "command ./script/$1 not exist.\n"
+    echo "Usage: $0 cmd [subcmd] [args...]"
+    exit -1
+fi
+

@@ -23,8 +23,8 @@ from datasets import (
 )
 from torchdata.datapipes.iter import IterableWrapper
 
-param_mode_path = "./assert/models/Qwen3-0.6B-Base"
-param_data_path = "./assert/datasets/BelleGroup/Belle_open_source_10.jsonl"
+param_mode_path = "./asserts/foreign/models/Qwen3-0.6B-Base"
+param_data_path = "./asserts/foreign/datasets/BelleGroup/Belle_open_source_1K.jsonl"
 
 
 tokenizer: models.Qwen2TokenizerFast = AutoTokenizer.from_pretrained(

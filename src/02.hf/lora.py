@@ -19,8 +19,8 @@ from datasets import load_dataset
 import transformers
 
 
-param_model_path = "./assert/models/Qwen3-0.6B-Base"
-param_data_patth = "./assert/datasets/BelleGroup/Belle_open_source_1K.jsonl"
+param_model_path = "./asserts/foreign/models/Qwen3-0.6B-Base"
+param_data_patth = "./asserts/foreign/datasets/BelleGroup/Belle_open_source_1K.json"
 
 
 logger.debug("loading tokenizer")

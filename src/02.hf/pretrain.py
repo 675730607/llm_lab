@@ -23,10 +23,8 @@ from datasets import load_dataset
 from itertools import chain
 
 
-MODEL_PATH = "./assert/models/Qwen3-0.6B-Base"
-PRETRAIN_DATA_PATHS = (
-    "./assert/datasets/seq-monkey/mobvoi_seq_monkey_general_open_corpus_5k.jsonl"
-)
+MODEL_PATH = "./asserts/foreign/models/Qwen3-0.6B-Base"
+PRETRAIN_DATA_PATHS = "./asserts/foreign/datasets/seq-monkey/mobvoi_seq_monkey_general_open_corpus_5K.jsonl"
 
 
 tokenizer: models.Qwen2TokenizerFast = AutoTokenizer.from_pretrained(
@@ -109,7 +107,7 @@ logger.debug(f"lm_ds exapmle {lm_ds["train"][0]}")
 
 
 # 初始化模型
-config = AutoConfig.from_pretrained(MODEL_PATH)
+config: models.Qwen3Config = AutoConfig.from_pretrained(MODEL_PATH)
 logger.debug(f"model config {config}")
 
 model: models.qwen3.Qwen3ForCausalLM = AutoModelForCausalLM.from_config(
